@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2016-10-07T05:47:02Z"/>
+
+  <way id="32515118">
+    <nd ref="365587462"/>
+    <nd ref="365587457"/>
+    <nd ref="365587456"/>
+    <nd ref="365587459"/>
+    <nd ref="365587458"/>
+    <nd ref="365587383"/>
+    <nd ref="365587384"/>
+    <nd ref="365587381"/>
+    <nd ref="4378569606"/>
+    <nd ref="365587382"/>
+    <nd ref="365587387"/>
+    <nd ref="365587388"/>
+    <nd ref="365587385"/>
+    <nd ref="365587386"/>
+    <nd ref="365587391"/>
+    <nd ref="365587392"/>
+    <nd ref="365587389"/>
+    <nd ref="365587390"/>
+    <nd ref="365587395"/>
+    <nd ref="365587396"/>
+    <nd ref="365587393"/>
+    <nd ref="365587394"/>
+    <nd ref="365587400"/>
+    <nd ref="365587399"/>
+    <nd ref="365587398"/>
+    <nd ref="365587397"/>
+    <nd ref="365587404"/>
+    <nd ref="365587403"/>
+    <nd ref="365587402"/>
+    <nd ref="365587401"/>
+    <nd ref="365587408"/>
+    <nd ref="365587407"/>
+    <nd ref="365587406"/>
+    <nd ref="365587405"/>
+    <nd ref="365587418"/>
+    <nd ref="365587412"/>
+    <nd ref="365587411"/>
+    <nd ref="365587409"/>
+    <nd ref="365587522"/>
+    <nd ref="365587521"/>
+    <nd ref="365587524"/>
+    <nd ref="365587523"/>
+    <nd ref="365587511"/>
+    <nd ref="365587510"/>
+    <nd ref="365587514"/>
+    <nd ref="365587512"/>
+    <nd ref="365587507"/>
+    <nd ref="365587506"/>
+    <nd ref="365587509"/>
+    <nd ref="365587508"/>
+    <nd ref="365587503"/>
+    <nd ref="365587502"/>
+    <nd ref="365587505"/>
+    <nd ref="365587504"/>
+    <nd ref="365587542"/>
+    <nd ref="365587546"/>
+    <nd ref="365587548"/>
+    <nd ref="365587549"/>
+    <nd ref="365587533"/>
+    <nd ref="365587534"/>
+    <nd ref="365587536"/>
+    <nd ref="365587539"/>
+    <nd ref="365587529"/>
+    <nd ref="365587530"/>
+    <nd ref="365587531"/>
+    <nd ref="365587532"/>
+    <nd ref="365587525"/>
+    <nd ref="365587526"/>
+    <nd ref="365587527"/>
+    <nd ref="365587528"/>
+    <nd ref="365587481"/>
+    <nd ref="365587480"/>
+    <nd ref="365587478"/>
+    <nd ref="365587477"/>
+    <nd ref="365587470"/>
+    <nd ref="365587469"/>
+    <nd ref="365587468"/>
+    <nd ref="365587467"/>
+    <nd ref="365587466"/>
+    <nd ref="4343870239"/>
+    <nd ref="365587465"/>
+    <nd ref="365587464"/>
+    <nd ref="365587463"/>
+    <nd ref="365587462"/>
+    <tag k="leisure" v="park"/>
+    <tag k="name" v="Heritage Community Park &amp; Natural Area"/>
+    <tag k="operator" v="Blacksburg Parks and Recreation"/>
+  </way>
+
+</osm>
