@@ -1,0 +1,1 @@
+https://parks.api.codefornrv.org/parks?osm_info=not.is.null
