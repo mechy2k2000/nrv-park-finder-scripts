@@ -1,1 +1,4 @@
 https://parks.api.codefornrv.org/parks?osm_info=not.is.null
+
+
+https://parks.api.codefornrv.org/parks?id=eq.12&select=*,amenities(*)

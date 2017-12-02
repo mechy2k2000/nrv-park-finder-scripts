@@ -13,7 +13,7 @@ import overpass
 import psycopg2
 from psycopg2.extensions import adapt
 
-URL_PARKS = "http://parks.api.codefornrv.org/parks"
+URL_PARKS = "https://parks.api.codefornrv.org/parks"
 URL_DB = "http://localhost:3000/fuk"
 URL_OVERPASS = "http://overpass-api.de/api/interpreter?data="
 
@@ -27,6 +27,8 @@ class Parks(object):
         self.nulled_parks = []
         self.total_parks_count = 0
         self.all_parks_data = None
+        self.osm_info_list = []
+
 
     def _get_nulled_park_count(self):
         count = len(self.nulled_parks)
@@ -45,15 +47,21 @@ class Parks(object):
         target_string = "[out:json];" + target + ";out body; >; out skel qt;"
         return target_string
 
-    def _call_overpass(self, target):
+    def _get_overpass_string_amenities(self, target):
+        target_string = "[out:json];" + target + ";map_to_area -> .a;way(area.a)[leisure];(._;>;);out;node(area.a)[leisure];out;"
+        return target_string
+    def _call_overpass(self, target, amenities):
         try:
-            print(self._get_overpass_string(target))
 
             """Feb 2, 2017 Changing to using overpass python wrapper verison
 
             """
-
-            r = requests.post(URL_OVERPASS, self._get_overpass_string(target))
+            if(amenities==False):
+                r = requests.post(URL_OVERPASS, self._get_overpass_string(target))
+                print(self._get_overpass_string(target))
+            if(amenities==True):
+                r = requests.post(URL_OVERPASS,self._get_overpass_string_amenities(target))
+                print(self._get_overpass_string_amenities(target))
             print("\n%%%%%\n\n" + r.text + "\n$$$$\n")
             tmp = open('tmp.json', 'w+')
             tmp.write(r.text)
@@ -75,6 +83,7 @@ class Parks(object):
     def get_park_total_count(self):
         try:
             r = requests.get(URL_PARKS)
+            print("%%%%%%%%%%% getting parks")
             pprint(r.text)
 
             data = json.loads(r.text)
@@ -87,13 +96,28 @@ class Parks(object):
             print(e)
 
     def list_osm_info(self):
+
+        pprint(self.all_parks_data)
+
+        print("before the for loop list")
         for item in self.all_parks_data:
+            print(item)
+            print("loop")
             try:
-                #print(item['osm_info']['osm_info'][0])
-                for index,osm in enumerate(item['osm_info']['osm_info'], start=1):
+                print(item['osm_info'][0])
+               # input("Pause 106 ")
+                for index,osm in enumerate(item['osm_info'], start=0):
+
                     print(index, osm['id'], osm['type'])
+                    osm_result = "%s(%s)" % (osm['type'], osm['id'])
+                    print("osm_result : %s " % osm_result)
+                #    input("Pause....")
+                    self.osm_info_list.append(osm['type']+ '(' + osm['id']+')')
+               # print("After for loop ln115")
             except:
                 continue
+
+        return(self.osm_info_list)
 
     def get_osm_info(self, id):
         for item in self.nulled_parks:
@@ -242,5 +266,6 @@ foo = Parks()
 #print(foo._get_nulled_park_count())
 
 foo.get_park_total_count()
-print(40*'%%%%%')
+#print(40*'%%%%%')
 foo.list_osm_info()
+pprint(foo.osm_info_list )

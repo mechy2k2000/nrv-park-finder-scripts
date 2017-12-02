@@ -1,0 +1,1 @@
+[out:json];way(32515091);map_to_area -> .a;way(area.a)[leisure];(._;>;);out;node(area.a)[leisure];out;
