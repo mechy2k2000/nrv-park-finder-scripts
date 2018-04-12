@@ -30,7 +30,9 @@ class Parks(object):
         self.osm_info_list = []
 
 
-    def _get_nulled_park_count(self):
+
+
+def _get_nulled_park_count(self):
         count = len(self.nulled_parks)
         return count
 
@@ -63,7 +65,7 @@ class Parks(object):
                 r = requests.post(URL_OVERPASS,self._get_overpass_string_amenities(target))
                 print(self._get_overpass_string_amenities(target))
             print("\n%%%%%\n\n" + r.text + "\n$$$$\n")
-            tmp = open('tmp.json', 'w+')
+             tmp = open('tmp.json', 'w+')
             tmp.write(r.text)
             tmp.close()
 
@@ -135,6 +137,7 @@ class Parks(object):
                     return item["osm_info"]["osm_info"]
 
 
+
     def get_list_of_null_parks(self):
         _endpoint = URL_PARKS + "?geom=is.null"
         try:
@@ -154,7 +157,9 @@ class Parks(object):
             print("Failure, Status Code: %s" % r.status_code)
             print(_endpoint)
 
+
     def get_nulled_geometeries(self):
+
 
         db = DB()
 
@@ -191,6 +196,7 @@ class Parks(object):
                 db.add_data(items["id"] , items["geom"])
 
       #      db.fill_point_location()
+
 
                 #print(r.text)
 

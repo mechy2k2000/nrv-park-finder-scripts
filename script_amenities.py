@@ -3,7 +3,7 @@
 import script
 import pprint
 import json
-
+import requests
 
 def print_amenities(park):
 
@@ -11,7 +11,7 @@ def print_amenities(park):
     print(amenities_length)
 
     #pprint.pprint(park["features"])
-    print(4*'\n')
+    print(2*'\n')
     for  index, item in enumerate(park["features"]):
         print( "%d : %s" % (index, item["properties"]))
         print("\n")
@@ -25,9 +25,12 @@ def get_amenities(park):
     except:
         pass
 
+def get_park_id(target):
+    URL_API_GET_PARK_ID = "https://parks.api.codefornrv.org/rpc/get_park_id_from_osm_info?osm_id=32515132&osm_type=way"
+    r = requests.get(URL_API_GET_PARK_ID)
+    print(r.text)
 
-
-amenities_array[]
+amenities_array = []
 
 test = script.Parks()
 test.get_park_total_count()
@@ -53,5 +56,4 @@ pprint.pprint(test.osm_info_list)
 for item in test.osm_info_list:
     get_amenities(item)
 
-
-
+print("end of script")
