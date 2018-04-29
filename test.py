@@ -12,7 +12,7 @@ test = script.Parks()
 #id = input("Enter osm id:")
 test.get_park_total_count()
 print("call test.list_osm_info()")
-input("Press Enter to Continue")
+#input("Press Enter to Continue")
 test.list_osm_info()
 pprint(test.osm_info_list)
 
@@ -25,7 +25,7 @@ for item in test.osm_info_list:
     resultj = json.loads(test._call_overpass(item,True))
     results.append(resultj)
     print("leisure count: " , len(resultj["features"]))
-    input("Press Enter to Continue")
+    #input("Press Enter to Continue")
 
 #results = test._call_overpass(id,True)
 

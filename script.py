@@ -32,9 +32,9 @@ class Parks(object):
 
 
 
-def _get_nulled_park_count(self):
-        count = len(self.nulled_parks)
-        return count
+    def _get_nulled_park_count(self):
+            count = len(self.nulled_parks)
+            return count
 
     def _print_nulled_park_ids(self):
         id_array = []
@@ -65,7 +65,7 @@ def _get_nulled_park_count(self):
                 r = requests.post(URL_OVERPASS,self._get_overpass_string_amenities(target))
                 print(self._get_overpass_string_amenities(target))
             print("\n%%%%%\n\n" + r.text + "\n$$$$\n")
-             tmp = open('tmp.json', 'w+')
+            tmp = open('tmp.json', 'w+')
             tmp.write(r.text)
             tmp.close()
 
@@ -80,6 +80,13 @@ def _get_nulled_park_count(self):
             print(target)
 
         return data
+
+    def parse_osm(self, target):
+        osm_data = {'type': '', 'id': '' }
+        osm_data['type']=target.split('(')[0]
+        osm_data['id']=target.split('(')[1].split(')')[0]
+
+        return osm_data
 
 
     def get_park_total_count(self):
@@ -188,10 +195,10 @@ def _get_nulled_park_count(self):
                 items["geom"] = self._call_overpass(target)
 
                 print(items["geom"])
-#                r = requests.patch(
-#                     ("%s%s%d" % (URL_DB,"?id=eq.",items["id"])),
-#                    {"geom" : items["geom"]}
-#                )
+                r = requests.patch(
+                    ("%s%s%d" % (URL_DB,"?id=eq.",items["id"])),
+                     {"geom" : items["geom"]}
+                )
 
                 db.add_data(items["id"] , items["geom"])
 
@@ -200,13 +207,31 @@ def _get_nulled_park_count(self):
 
                 #print(r.text)
 
+    def get_park_id(self, target):
+        """
+            example of target input
+            way(11111111)
+            node(11111111)
+            relation(11111111)
+        """
+        print("Target: " + target)
+        target_parsed = self.parse_osm(target)
+        request_string = ("https://parks.api.codefornrv.org/rpc/get_park_id_from_osm_info?osm_id=" +
+                            target_parsed['id'] +
+                            "&osm_type=" +
+                            target_parsed['type'])
+
+        print(request_string)
+        r = requests.get(request_string)
+
+        return r.text
 
 
 
 
 
     #def set_nulled_parks()
-        #for item in
+    #for item in
 class DB(object):
 
     def __init__(self):
